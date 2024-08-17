@@ -1,4 +1,4 @@
-import "./styles/global.css"
+import "./styles/Global.css"
 
 // Reaproveitamento de estrutura
 import { Outlet } from "react-router-dom"
