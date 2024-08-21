@@ -4,15 +4,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 90px;
-  background-color: #87d0dd;
-  padding-right: 50px;
+  gap: 5.625rem;
+  background-color: #97d2dd;
+  padding-right: 3.125rem;
 }
-
 /* Logo do cabeçalho */
 .logoHeader img {
-  padding-top: 20px;
-  max-width: 300px;
+  padding-top: 1.25rem;
+  max-width: 18.75rem;
   height: auto;
 }
 
@@ -26,20 +25,20 @@
 /* Links do Cabeçalho */
 .navLink {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #0243a4;
   font-weight: bolder;
 }
 /* Links do Cabeçalho -> Hover */
 .navLink:hover {
-  color: #f7f7f7;
+  color: #0267d3;
   text-decoration: underline;
   transition: color 0.2s ease;
 }
 
 /* Icone de Login no Cabeçalho -> Pai */
 .loginIconHeader {
-  font-size: 40px;
+  font-size: 2.5rem;
   text-decoration: none;
 }
 /* Icone do Login no Cabeçalho */
@@ -49,46 +48,46 @@
 }
 /* Icone do Login no Cabeçalho -> Hover */
 .loginIconHeader .loginIcon:hover {
-  color: #f7f7f7;
+  color: #0267d3;
   transition: color 0.2s ease;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .logoHeader img {
-    max-width: 200px;
+    max-width: 12.5rem;
   }
 
   .navLink {
-    font-size: 18px;
-    margin: 10px 0;
+    font-size: 1.125rem;
+    margin: 0.625rem 0;
   }
 
   .loginIconHeader {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 
   @media (max-width: 425px) {
     .headerContainer {
-      gap: 10px;
-      padding-right: 30px;
+      gap: 0.625rem;
+      padding-right: 1.875rem;
     }
 
     .logoHeader img {
-      max-width: 150px;
+      max-width: 9.375rem;
     }
 
     .navLinksContainer {
       width: 90%;
-      margin-right: 20px;
+      margin-right: 1.25rem;
     }
 
     .navLink {
-      font-size: 16px;
+      font-size: 1rem;
     }
 
     .loginIconHeader {
-      font-size: 22px;
+      font-size: 1.375rem;
     }
   }
 }
