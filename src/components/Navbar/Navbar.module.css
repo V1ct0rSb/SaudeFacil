@@ -5,7 +5,7 @@
   justify-content: space-around;
   align-items: center;
   gap: 5.625rem;
-  background-color: #97d2dd;
+  background-color: #f7f7f7;
   padding-right: 3.125rem;
 }
 /* Logo do cabeçalho */
@@ -31,7 +31,7 @@
 }
 /* Links do Cabeçalho -> Hover */
 .navLink:hover {
-  color: #0267d3;
+  color: #4ea4ff;
   text-decoration: underline;
   transition: color 0.2s ease;
 }
@@ -48,7 +48,7 @@
 }
 /* Icone do Login no Cabeçalho -> Hover */
 .loginIconHeader .loginIcon:hover {
-  color: #0267d3;
+  color: #4ea4ff;
   transition: color 0.2s ease;
 }
 
