@@ -8,7 +8,7 @@ function Navbar() {
       <div className={styles.logoHeader}>
         <Link to="/" className={styles.logoLinkHeader}>
           <img
-            src="/src/assets/logo/logoSaudeFacilTransparente.png"
+            src="public/logoSaudeFacilTransparente.png"
             alt="Logo SaúdeFácil"
           />
         </Link>
