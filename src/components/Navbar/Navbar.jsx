@@ -7,7 +7,10 @@ function Navbar() {
     <header className={styles.headerContainer}>
       <div className={styles.logoHeader}>
         <Link to="/" className={styles.logoLinkHeader}>
-          <img src="../src/assets/LG-suadeFacilTransparente.png" alt="Logo SaúdeFácil" />
+          <img
+            src="/src/assets/logo/logoSaudeFacilTransparente.png"
+            alt="Logo SaúdeFácil"
+          />
         </Link>
       </div>
 
@@ -22,7 +25,7 @@ function Navbar() {
           Contato
         </Link>
       </nav>
-      
+
       <div className={styles.loginIconHeader}>
         <Link to="/">
           <MdAccountCircle className={styles.loginIcon} />
