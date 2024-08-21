@@ -1,5 +1,6 @@
 import { MdAccountCircle } from "react-icons/md"
 import { Link } from "react-router-dom"
+import logo from "../../assets/logo.png"
 import styles from "./Navbar.module.css"
 
 function Navbar() {
@@ -7,7 +8,7 @@ function Navbar() {
     <header className={styles.headerContainer}>
       <div className={styles.logoHeader}>
         <Link to="/" className={styles.logoLinkHeader}>
-          <img src="../../assets/logo.png" alt="Logo SaúdeFácil" />
+          <img src={logo} alt="Logo SaúdeFácil" />
         </Link>
       </div>
 
