@@ -1,4 +1,4 @@
-import bannerVideo from "../../assets/Banner.mp4"
+import bannerVideo from "../../assets/banner.mp4"
 import styles from "./Home.module.css"
 
 export default function Home() {
