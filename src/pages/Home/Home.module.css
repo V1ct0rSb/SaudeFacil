@@ -54,7 +54,6 @@
   transition: background 0.2s ease;
 }
 
-/* Dispositivos menores como tablets */
 @media (max-width: 768px) {
   .bannerContent {
     width: 70vh;
@@ -71,7 +70,6 @@
   }
 }
 
-/* Dispositivos pequenos como smartphones */
 @media (max-width: 480px) {
   .bannerContent h1 {
     font-size: 1.875rem;
@@ -81,5 +79,88 @@
   .bannerContent button {
     padding: 0.625rem 1.25rem;
     font-size: 1.125rem;
+  }
+}
+
+/* Section02: Atraido usuario */
+/* Container -> Pai  */
+.sectionAttractContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  padding: 80px 20px;
+  justify-content: space-around;
+  background: linear-gradient(to bottom, #eef9fa, #80eaa0);
+}
+
+/* Container do texto e Imgaem -> Pai */
+.sectionAttractText {
+  width: 50%;
+  text-align: justify;
+}
+/* Texto */
+.sectionAttractText h1 {
+  font-size: 45px;
+  margin-bottom: 40px;
+}
+.sectionAttractText p {
+  line-height: 2;
+  font-size: 20px;
+  color: #333;
+}
+/* Imagem  */
+.sectionAttractImg img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .sectionAttractContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sectionAttractText h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .sectionAttractText p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .sectionAttractText {
+    width: 80%;
+  }
+}
+
+@media (max-width: 425px) {
+  .sectionAttractContainer {
+    flex-direction: column-reverse;
+    padding: 40px 15px;
+  }
+
+  .sectionAttractText {
+    width: 90%;
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  .sectionAttractText h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .sectionAttractText p {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+  }
+
+  .sectionAttractImg {
+    margin-top: 15px;
   }
 }

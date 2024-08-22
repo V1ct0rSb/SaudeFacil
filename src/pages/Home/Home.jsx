@@ -1,4 +1,5 @@
 import bannerVideo from "../../assets/banner.mp4"
+import attractImg from "../../assets/img01.png"
 import styles from "./Home.module.css"
 
 export default function Home() {
@@ -21,8 +22,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <h1>teste</h1>
+      <section className={styles.sectionAttractContainer}>
+        <div className={styles.sectionAttractText}>
+          <h1>Seja o protagonista da sua saúde</h1>
+          <p>
+            Empodere-se no cuidado da sua saúde com nosso sistema de autogestão
+            de sintomas. <br />
+            Monitore, compreenda e gerencie seus sintomas de forma prática e
+            eficiente. Tenha mais autonomia e confiança na sua jornada de saúde,
+            tomando decisões informadas e vivendo com mais qualidade de vida.
+            Seja protagonista do seu bem-estar!
+          </p>
+        </div>
+
+        <div className={styles.sectionAttractImg}>
+          <img src={attractImg} alt="Homem se defendendo de bacterias" />
+        </div>
       </section>
     </main>
   )
