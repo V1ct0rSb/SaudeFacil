@@ -48,7 +48,7 @@ function Carousel() {
         pagination={{ clickable: true }}
         navigation
         autoplay={{
-          delay: 4000,
+          delay: 20000,
           disableOnInteraction: false,
         }}
         className={styles.swiperContainer}
