@@ -89,9 +89,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  padding: 80px 20px;
+  padding: 5rem 1.25rem;
   justify-content: space-around;
   background: linear-gradient(to bottom, #eef9fa, #80deea);
+  height: 53.125rem;
 }
 
 /* Container do texto e Imgaem -> Pai */
@@ -101,12 +102,12 @@
 }
 /* Texto */
 .sectionAttractText h1 {
-  font-size: 45px;
-  margin-bottom: 40px;
+  font-size: 2.8125rem;
+  margin-bottom: 2.5rem;
 }
 .sectionAttractText p {
   line-height: 2;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #333;
 }
 /* Imagem  */
@@ -123,12 +124,12 @@
   }
 
   .sectionAttractText h1 {
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 1.875rem;
+    margin-bottom: 1.25rem;
   }
 
   .sectionAttractText p {
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
   }
 
@@ -140,80 +141,152 @@
 @media (max-width: 425px) {
   .sectionAttractContainer {
     flex-direction: column-reverse;
-    padding: 40px 15px;
+    padding: 2.5rem 0.9375rem;
   }
 
   .sectionAttractText {
     width: 90%;
-    padding-top: 30px;
+    padding-top: 1.875rem;
     text-align: center;
   }
 
   .sectionAttractText h1 {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 1.25rem;
+    margin-bottom: 0.9375rem;
   }
 
   .sectionAttractText p {
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
     text-align: justify;
   }
 
   .sectionAttractImg {
-    margin-top: 15px;
+    margin-top: 0.9375rem;
   }
 }
 
-/* section03 */
+/* section03  -> Recursos*/
+/* Container -> Pai */
 .sectionCharacterContainer {
+  background: linear-gradient(to bottom, #80deea, #ffffff);
+  height: auto;
+  padding: 1.25rem;
+}
+
+/* Titulo do Container*/
+.sectionCharacterContainer h1 {
+  text-align: center;
+  font-size: 2.8125rem;
+  padding: 6.25rem 0 1.25rem 0;
+}
+
+/* Box -> Pai */
+.sectionCharacterBox {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 80px;
-  padding: 80px;
-  background: linear-gradient(to bottom, #80deea, #ffffff);
-  height: 600px;
+  gap: 1.875rem;
+  padding: 5rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
+/* Box com conteudo  */
 .chareacterBox {
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: #ffffff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  box-shadow: 0rem 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
   transition: transform 0.3s, box-shadow 0.3s;
-  height: 450px;
-  width: 500px;
+  height: 28.125rem;
+  width: 100%;
+  max-width: 31.25rem;
+  margin: 1.25rem;
 }
 .chareacterBox:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.3125rem);
+  box-shadow: 0rem 0.5rem 1.25rem rgba(0, 0, 0, 0.15);
 }
 
+/* Icone */
 .iconBox {
   background-color: #3f92ff;
   border-radius: 50%;
-  padding: 15px;
-  margin-top: 20px;
+  padding: 0.9375rem;
+  margin-top: 1.25rem;
   color: #ffffff;
-  font-size: 60px;
+  font-size: 3.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Titilo da box  */
 .textBox h1 {
-  padding-top: 40px;
-  padding-bottom: 20px;
-  font-size: 25px;
+  padding-top: 2.5rem;
+  padding-bottom: 1.25rem;
+  font-size: 1.5625rem;
   text-align: center;
 }
 
+/* Texto da Box  */
 .textBox p {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.8;
-  text-align: justify;
-  padding: 0 20px;
+  text-align: center;
+  padding: 0 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .sectionCharacterContainer h1 {
+    font-size: 2.1875rem;
+    padding: 3.75rem 0 1.25rem 0;
+  }
+
+  .sectionCharacterBox {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2.5rem 0.625rem;
+  }
+
+  .chareacterBox {
+    width: 100%;
+    height: 31.25rem;
+    margin: 0.625rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionCharacterContainer h1 {
+    font-size: 1.75rem;
+    padding: 2.5rem 0 1.25rem 0;
+  }
+
+  .iconBox {
+    font-size: 2.8125rem;
+  }
+
+  .textBox h1 {
+    font-size: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 0.625rem;
+  }
+
+  .textBox p {
+    font-size: 1rem;
+    padding: 0 0.625rem;
+  }
+
+  .sectionCharacterBox {
+    padding: 1.25rem 0;
+  }
+
+  .chareacterBox {
+    width: 100%;
+    height: 25rem;
+    margin: 0.625rem 0;
+  }
 }

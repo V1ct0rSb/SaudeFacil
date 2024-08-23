@@ -13,15 +13,15 @@ function Navbar() {
       </div>
 
       <nav className={styles.navLinksContainer}>
-        <Link to="/sintomas" className={styles.navLink}>
-          Sintomas
-        </Link>
-        <Link to="/sobre" className={styles.navLink}>
+        <a href="#sobre" className={styles.navLink}>
           Sobre
-        </Link>
-        <Link to="/contato" className={styles.navLink}>
-          Contato
-        </Link>
+        </a>
+        <a href="#recursos" className={styles.navLink}>
+          Recursos
+        </a>
+        <a href="#depoimentos" className={styles.navLink}>
+          Depoimentos
+        </a>
       </nav>
 
       <div className={styles.loginIconHeader}>
