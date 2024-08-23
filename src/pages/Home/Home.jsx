@@ -7,6 +7,7 @@ import { MdAppRegistration } from "react-icons/md"
 import { TbReportAnalytics } from "react-icons/tb"
 import Carrousel from "../../components/Carousel/Carousel"
 import Navbar from "../../components/Navbar/Navbar"
+import Footer from "../../components/Footer/Footer"
 
 export default function Home() {
   return (
@@ -113,6 +114,8 @@ export default function Home() {
           <Carrousel />
         </section>
       </main>
+
+      <Footer />
     </>
   )
 }
