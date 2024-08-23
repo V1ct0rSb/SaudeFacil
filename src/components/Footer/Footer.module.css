@@ -1,6 +1,6 @@
 .footer {
-  background-color: #2d2d2d;
-  color: #fff;
+  background: linear-gradient(to bottom, #ffffff, #80deea);
+  color: #000000;
   padding: 40px 0;
   text-align: center;
 }
@@ -38,7 +38,7 @@ p {
 }
 
 .socialIcons a {
-  color: #fff;
+  color: #000000;
   font-size: 1.5rem;
   transition: color 0.3s;
 }
