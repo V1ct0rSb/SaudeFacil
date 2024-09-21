@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.logoHeader}>
-        <Link to="/" className={styles.logoLinkHeader}>
+        <Link to="/LoginPaciente" className={styles.logoLinkHeader}>
           <img src={logo} alt="Logo SaúdeFácil" />
         </Link>
       </div>
@@ -25,7 +25,7 @@ function Navbar() {
       </nav>
 
       <div className={styles.loginIconHeader}>
-        <Link to="/">
+        <Link to="/CadastroPaciente">
           <MdAccountCircle className={styles.loginIcon} />
         </Link>
       </div>

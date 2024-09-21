@@ -26,12 +26,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: rgb(255, 255, 255);
   max-width: 90%;
 }
 
 /* Titulo do banner */
 .bannerContent h1 {
+  color: rgb(255, 255, 255);
   font-size: 3rem;
   margin-bottom: 2.5rem;
   text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.7);
