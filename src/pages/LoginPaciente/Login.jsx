@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Footer from "../../components/Footer/Footer"
-import Navbar from "../../components/Navbar/Navbar"
+import NavbarClean from "../../components/NavbarClean/NavbarClean"
 import { UserContext } from "../../db/context/UserContext"
 import styles from "./Login.module.css"
 
@@ -58,7 +58,7 @@ export default function Login() {
 
       if (response.ok) {
         setUser(data.user) // Armazena as informações do usuário no contexto
-        navigate("/HomePaciente") // Redireciona para a página HomePaciente
+        navigate("/HomePaciente")
       } else {
         setLoginError(data.message || "Erro ao realizar login")
       }
@@ -70,7 +70,7 @@ export default function Login() {
 
   return (
     <>
-      <Navbar />
+      <NavbarClean />
       <main>
         <section className={styles.loginSection}>
           <form className={styles.loginPacienteForm} onSubmit={handleSubmit}>
@@ -111,7 +111,8 @@ export default function Login() {
             <button type="submit">Entrar</button>
             <div className={styles.registerLink}>
               <p>
-                Não tem uma conta? <Link to="/cadastro">Cadastre-se aqui</Link>
+                Não tem uma conta?{" "}
+                <Link to="/CadastroPaciente">Cadastre-se aqui</Link>
               </p>
             </div>
           </form>

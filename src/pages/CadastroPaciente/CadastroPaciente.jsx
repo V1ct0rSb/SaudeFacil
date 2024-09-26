@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Footer from "../../components/Footer/Footer"
-import Navbar from "../../components/Navbar/Navbar"
+import NavbarClean from "../../components/NavbarClean/NavbarClean"
 import styles from "./CadastroPaciente.module.css"
 
 export default function CadastroPaciente() {
@@ -99,7 +99,7 @@ export default function CadastroPaciente() {
 
   return (
     <>
-      <Navbar />
+      <NavbarClean />
       <main>
         <section>
           <form className={styles.cadastroPacienteForm} onSubmit={handleSubmit}>
