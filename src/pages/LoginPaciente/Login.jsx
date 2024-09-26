@@ -1,6 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import Footer from "../../components/Footer/Footer"
 import Navbar from "../../components/Navbar/Navbar"
+import { UserContext } from "../../db/context/UserContext"
 import styles from "./Login.module.css"
 
 export default function Login() {
@@ -11,6 +13,8 @@ export default function Login() {
 
   const [errors, setErrors] = useState({})
   const [loginError, setLoginError] = useState("")
+  const { setUser } = useContext(UserContext)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -53,8 +57,8 @@ export default function Login() {
       const data = await response.json()
 
       if (response.ok) {
-        alert("Login bem-sucedido!")
-        // Redirecionar ou realizar outras ações após login bem-sucedido
+        setUser(data.user) // Armazena as informações do usuário no contexto
+        navigate("/HomePaciente") // Redireciona para a página HomePaciente
       } else {
         setLoginError(data.message || "Erro ao realizar login")
       }
@@ -69,7 +73,7 @@ export default function Login() {
       <Navbar />
       <main>
         <section className={styles.loginSection}>
-          <form className={styles.loginForm} onSubmit={handleSubmit}>
+          <form className={styles.loginPacienteForm} onSubmit={handleSubmit}>
             <h2>Login</h2>
 
             <label htmlFor="email" className={styles["label-required"]}>
@@ -105,6 +109,11 @@ export default function Login() {
             {loginError && <span className={styles.error}>{loginError}</span>}
 
             <button type="submit">Entrar</button>
+            <div className={styles.registerLink}>
+              <p>
+                Não tem uma conta? <Link to="/cadastro">Cadastre-se aqui</Link>
+              </p>
+            </div>
           </form>
         </section>
       </main>
