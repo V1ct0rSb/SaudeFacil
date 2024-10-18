@@ -57,6 +57,10 @@ export default function Login() {
       const data = await response.json()
 
       if (response.ok) {
+        localStorage.setItem("usuarioId", data.user.id) // Armazena o ID do usuário no localStorage
+        console.log("Login bem-sucedido:", data)
+        console.log("Id Logado:", data.user.id)
+
         setUser(data.user) // Armazena as informações do usuário no contexto
         navigate("/HomePaciente")
       } else {

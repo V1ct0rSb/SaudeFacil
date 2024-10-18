@@ -6,6 +6,7 @@ import { UserProvider } from "./db/context/UserContext"
 import CadastroPaciente from "./pages/CadastroPaciente/CadastroPaciente"
 import Home from "./pages/Home/Home.jsx"
 import Login from "./pages/LoginPaciente/Login.jsx"
+import CadastroSintomasPaciente from "./pages/Paciente/CadastroSintomasPaciente/CadastroSintomasPaciente.jsx"
 import HomePaciente from "./pages/Paciente/HomePaciente/HomePaciente.jsx"
 import "./styles/Global.css"
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/HomePaciente",
         element: <HomePaciente />,
+      },
+      {
+        path: "/CadastroSintomasPaciente",
+        element: <CadastroSintomasPaciente />,
       },
     ],
   },
