@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import ImagemLogin from "../../assets/login.png"
 import Footer from "../../components/Footer/Footer"
 import NavbarClean from "../../components/NavbarClean/NavbarClean"
 import { UserContext } from "../../db/context/UserContext"
@@ -31,8 +32,7 @@ export default function Login() {
 
     if (!formData.senha) newErrors.senha = "Senha é obrigatória"
     else if (!passwordRegex.test(formData.senha))
-      newErrors.senha =
-        "Senha deve ter no mínimo 8 caracteres, incluindo números"
+      newErrors.senha = "Senha deve ter no mínimo 8 caracteres"
 
     return newErrors
   }
@@ -75,11 +75,28 @@ export default function Login() {
   return (
     <>
       <NavbarClean />
-      <main>
-        <section className={styles.loginSection}>
-          <form className={styles.loginPacienteForm} onSubmit={handleSubmit}>
-            <h2>Login</h2>
+      <main className={styles.mainContainer}>
+        <div className={styles.imageContainer}>
+          <img
+            className={styles.image}
+            src={ImagemLogin}
+            alt="Ilustração de uma pessoas correndo e tendo bons hábitos de saúde"
+          />
+        </div>
 
+        <form
+          className={styles.loginPacienteForm}
+          onSubmit={handleSubmit}
+          style={{ width: "100%" }}
+          role="form"
+          aria-labelledby="login-title"
+        >
+          <h2 id="login-title" className={styles.titleForm}>
+            Bem-vindo! <br />
+            Entre para acessar sua conta
+          </h2>
+
+          <div className={styles.inputForm}>
             <label htmlFor="email" className={styles["label-required"]}>
               E-mail
             </label>
@@ -87,12 +104,21 @@ export default function Login() {
               type="email"
               id="email"
               name="email"
+              placeholder="SeuEmail@gmail.com"
               required
+              aria-required="true"
               value={formData.email}
               onChange={handleChange}
+              aria-describedby="email-error"
             />
             {errors.email && (
-              <span className={styles.error}>{errors.email}</span>
+              <span
+                id="email-error"
+                className={styles.error}
+                aria-live="polite"
+              >
+                {errors.email}
+              </span>
             )}
 
             <label htmlFor="senha" className={styles["label-required"]}>
@@ -102,25 +128,41 @@ export default function Login() {
               type="password"
               id="senha"
               name="senha"
+              placeholder="Sua Senha"
               required
+              aria-required="true"
               value={formData.senha}
               onChange={handleChange}
+              aria-describedby="senha-error"
             />
             {errors.senha && (
-              <span className={styles.error}>{errors.senha}</span>
+              <span
+                id="senha-error"
+                className={styles.error}
+                aria-live="polite"
+              >
+                {errors.senha}
+              </span>
             )}
+            {loginError && (
+              <span className={styles.error} aria-live="polite">
+                {loginError}
+              </span>
+            )}
+          </div>
 
-            {loginError && <span className={styles.error}>{loginError}</span>}
-
-            <button type="submit">Entrar</button>
+          <div className={styles.buttonForm}>
+            <button type="submit" aria-label="Entrar no sistema">
+              Entrar
+            </button>
             <div className={styles.registerLink}>
               <p>
                 Não tem uma conta?{" "}
                 <Link to="/CadastroPaciente">Cadastre-se aqui</Link>
               </p>
             </div>
-          </form>
-        </section>
+          </div>
+        </form>
       </main>
       <Footer />
     </>
