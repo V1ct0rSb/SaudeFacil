@@ -21,14 +21,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 25px;
-  padding: 300px;
+  gap: 1.5625rem;
+  padding: 18.75rem;
   height: 100vh;
   background: linear-gradient(180deg, #e0e0e0 90%, rgba(255, 255, 255, 1) 100%);
 }
 
 .loginPacienteForm h2 {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   font-size: 1.8rem;
   color: #333;
   text-align: center;
@@ -36,7 +36,7 @@
 
 .loginPacienteForm label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   font-weight: 600;
   font-size: 1rem;
   color: #333;
@@ -44,10 +44,10 @@
 
 .loginPacienteForm input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
+  padding: 0.625rem;
+  margin-bottom: 1.25rem;
+  border: 0.0625rem solid #ced4da;
+  border-radius: 0.3125rem;
   font-size: 1rem;
   transition: border 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
@@ -56,7 +56,7 @@
 .loginPacienteForm input:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.5);
 }
 
 .loginPacienteForm button {
@@ -64,11 +64,11 @@
   margin: auto;
   justify-content: center;
   width: 50%;
-  padding: 12px;
+  padding: 0.75rem;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
@@ -80,13 +80,13 @@
 }
 
 .loginPacienteForm button:focus {
-  outline: 2px solid #0056b3;
-  outline-offset: 2px;
+  outline: 0.125rem solid #0056b3;
+  outline-offset: 0.125rem;
 }
 
 .loginPacienteForm .registerLink {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .loginPacienteForm .registerLink a {
@@ -104,7 +104,7 @@
 }
 
 .error[aria-live="polite"] {
-  margin-top: 5px;
+  margin-top: 0.3125rem;
 }
 
 .loginPacienteForm button {
@@ -123,7 +123,7 @@
   }
 
   .loginPacienteForm {
-    padding: 30px;
+    padding: 1.875rem;
   }
 
   .loginPacienteForm button {
@@ -147,7 +147,7 @@
   }
 
   .loginPacienteForm {
-    padding: 180px;
+    padding: 11.25rem;
     height: 80vh;
   }
 
@@ -158,7 +158,7 @@
 
   .loginPacienteForm button {
     font-size: 1rem;
-    padding: 10px;
+    padding: 0.625rem;
   }
 }
 
@@ -178,7 +178,7 @@
   }
 
   .loginPacienteForm {
-    padding: 40px;
+    padding: 2.5rem;
     height: 80vh;
   }
 
@@ -189,6 +189,6 @@
 
   .loginPacienteForm button {
     font-size: 1rem;
-    padding: 10px;
+    padding: 0.625rem;
   }
 }

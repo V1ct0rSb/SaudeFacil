@@ -1,23 +1,23 @@
 .cadastroPacienteMain {
   background: linear-gradient(180deg, #dceaf8 90%, rgba(255, 255, 255, 1) 100%);
-  padding-top: 90px;
+  padding-top: 5.625rem;
 }
 
 .cadastroPacienteForm {
   display: flex;
   flex-direction: column;
   width: 90%;
-  max-width: 900px;
-  margin: 0 auto 90px auto;
+  max-width: 56.25rem;
+  margin: 0 auto 5.625rem auto;
   padding: 3rem;
   background-color: rgb(214, 214, 214);
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 0.625rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0rem 0.3125rem 0.9375rem;
 }
 
 .cadastroPacienteForm label {
   display: block;
-  margin-top: 10px;
+  margin-top: 0.625rem;
   font-weight: bold;
   color: #333;
 }
@@ -25,10 +25,10 @@
 .cadastroPacienteForm input,
 .cadastroPacienteForm select,
 .cadastroPacienteForm textarea {
-  margin-top: 5px;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  margin-top: 0.3125rem;
+  padding: 0.625rem;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #ccc;
   font-size: 1rem;
   width: 100%;
 }
@@ -38,12 +38,12 @@
 .cadastroPacienteForm textarea:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.5);
 }
 
 .cadastroPacienteForm textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 6.25rem;
 }
 
 .cadastroPacienteForm h2 {
@@ -55,14 +55,14 @@
 .cadastroPacienteForm .section {
   margin-bottom: 2rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #000;
+  border-bottom: 0.0625rem solid #000;
 }
 
 /* Mensagem de erro */
 .cadastroPacienteForm .error {
   color: red;
   font-size: 0.9rem;
-  margin-top: 5px;
+  margin-top: 0.3125rem;
 }
 
 .cadastroPacienteForm .label-required:after {
@@ -76,7 +76,7 @@
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   font-size: 1.125rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -92,9 +92,9 @@
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .cadastroPacienteForm {
-    max-width: 700px;
+    max-width: 43.75rem;
     padding: 1.5rem;
-    margin: 0 auto 60px auto;
+    margin: 0 auto 3.75rem auto;
   }
 
   .cadastroPacienteForm h2 {
