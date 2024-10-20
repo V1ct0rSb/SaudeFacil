@@ -100,7 +100,7 @@ export default function CadastroPaciente() {
   return (
     <>
       <NavbarClean />
-      <main>
+      <main className={styles.cadastroPacienteMain}>
         <section>
           <form className={styles.cadastroPacienteForm} onSubmit={handleSubmit}>
             {/* Seção de Login */}
