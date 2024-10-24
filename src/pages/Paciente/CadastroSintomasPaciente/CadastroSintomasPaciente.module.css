@@ -1,7 +1,11 @@
+main {
+  background: linear-gradient(180deg, #dceaf8 90%, rgba(255, 255, 255, 1) 100%);
+  padding: 60px;
+}
 .container {
   width: 100%;
+  margin: 0 auto;
   max-width: 800px;
-  margin: 20px auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
