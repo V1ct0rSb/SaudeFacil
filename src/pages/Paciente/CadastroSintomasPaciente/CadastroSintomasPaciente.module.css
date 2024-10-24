@@ -1,73 +1,130 @@
-/* CadastroSintomasPaciente.module.css */
 .container {
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   color: #333;
   text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .formGroup {
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 8px;
+  font-weight: 600;
   color: #555;
 }
 
-.inputField {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
+.inputField,
 .textArea {
   width: 100%;
-  padding: 10px;
-  height: 100px;
+  padding: 12px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.inputField:focus,
+.textArea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.5);
 }
 
 .button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  transition: background-color 0.3s;
 }
 
 .button:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
+/* Exibição dos sintomas ------------------------  */
 .list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin-top: 20px;
 }
 
 .listItem {
-  background-color: #eee;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.listItem + .listItem {
-  margin-top: 10px;
+.listItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
 }
+
+.sintomaHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sintomaTipo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.sintomaContent {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.sintomaContent p {
+  margin: 8px 0;
+}
+
+.deleteButton {
+  background-color: #fb1e05;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deleteButton p {
+  font-size: 18px;
+}
+
+.deleteButtonIcon {
+  font-size: 20px;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+}
+
+/* ------------------------ Exibição dos sintomas   */
