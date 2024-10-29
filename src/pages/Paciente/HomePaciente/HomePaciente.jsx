@@ -43,7 +43,7 @@ function HomePaciente() {
             </Link>
           </div>
           <div className={styles.selectButton}>
-            <Link to="/CadastroSintomasPaciente">
+            <Link to="/DiagnosticoPrevio">
               <button>
                 <div className={styles.selectButtonIcon}>
                   <FaHospitalUser />

@@ -70,3 +70,23 @@ export const obterSintomasPorUsuario = (req, res) => {
     res.status(200).json(results)
   })
 }
+
+// Função para obter o CEP do usuário
+export const obterCepDoUsuario = (req, res) => {
+  const { usuario_id } = req.params
+
+  const sql = `SELECT cep FROM usuario WHERE id = ?`
+
+  req.db.query(sql, [usuario_id], (err, results) => {
+    if (err) {
+      console.error("Erro ao buscar CEP do usuário:", err)
+      return res.status(500).json({ message: "Erro ao buscar CEP do usuário" })
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ message: "Usuário não encontrado" })
+    }
+
+    res.status(200).json({ cep: results[0].cep })
+  })
+}

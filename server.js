@@ -3,9 +3,10 @@ import cors from "cors"
 import express from "express"
 import mysql from "mysql2"
 import cadastroRoutes from "./src/db/routes/cadastro.js"
+import lembretesRoutes from "./src/db/routes/lembretes.js"
 import loginRoutes from "./src/db/routes/login.js"
 import sintomasRoutes from "./src/db/routes/sintomas.js"
-import lembretesRoutes from "./src/db/routes/lembretes.js"
+import usuarioRoutes from "./src/db/routes/usuario.js"
 
 const app = express()
 const port = 3006
@@ -37,6 +38,7 @@ app.use(loginRoutes)
 app.use(bodyParser.json())
 app.use("/sintomas", sintomasRoutes)
 app.use("/lembretes", lembretesRoutes)
+app.use("/usuario", usuarioRoutes)
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`)
