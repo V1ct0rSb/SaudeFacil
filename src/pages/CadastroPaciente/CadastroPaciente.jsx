@@ -114,6 +114,7 @@ export default function CadastroPaciente() {
                 type="email"
                 id="email"
                 name="email"
+                placeholder="email@meuemail.com"
                 required
                 value={formData.email}
                 onChange={handleChange}
@@ -129,6 +130,7 @@ export default function CadastroPaciente() {
                 type="password"
                 id="senha"
                 name="senha"
+                placeholder="Sua senha"
                 required
                 value={formData.senha}
                 onChange={handleChange}
@@ -149,6 +151,7 @@ export default function CadastroPaciente() {
                 type="text"
                 id="nome"
                 name="nome"
+                placeholder="João da Silva Pereira de Souza"
                 required
                 value={formData.nome}
                 onChange={handleChange}
@@ -181,6 +184,7 @@ export default function CadastroPaciente() {
                 type="tel"
                 id="telefone"
                 name="telefone"
+                placeholder="12123456789"
                 value={formData.telefone}
                 onChange={handleChange}
               />
@@ -195,6 +199,7 @@ export default function CadastroPaciente() {
                 type="text"
                 id="cep"
                 name="cep"
+                placeholder="00000-000"
                 value={formData.cep}
                 onChange={handleChange}
               />
@@ -213,6 +218,7 @@ export default function CadastroPaciente() {
                 id="peso"
                 name="peso"
                 step="0.01"
+                placeholder="Ex: 65.5"
                 value={formData.peso}
                 onChange={handleChange}
               />
@@ -227,6 +233,7 @@ export default function CadastroPaciente() {
                 type="number"
                 id="altura"
                 name="altura"
+                placeholder="Ex: 1.75"
                 step="0.01"
                 value={formData.altura}
                 onChange={handleChange}
@@ -271,6 +278,7 @@ export default function CadastroPaciente() {
               <textarea
                 id="alergias"
                 name="alergias"
+                placeholder="Ex: Alergia a penicilina"
                 value={formData.alergias}
                 onChange={handleChange}
               ></textarea>
@@ -279,6 +287,7 @@ export default function CadastroPaciente() {
               <textarea
                 id="medicamentos"
                 name="medicamentos"
+                placeholder="Ex: Paracetamol"
                 value={formData.medicamentos}
                 onChange={handleChange}
               ></textarea>
