@@ -20,9 +20,12 @@ const perguntas = [
 ]
 
 // Combinações para identificar sintomas
+// Combinações para identificar sintomas
 const identificarSintomas = (respostas) => {
   const sintomas = []
+  let sintomaGrave = false // Variável para rastrear sintomas graves
 
+  // Identificação de sintomas
   if (
     respostas[1] === "Sim" &&
     respostas[2] === "Sim" &&
@@ -61,7 +64,8 @@ const identificarSintomas = (respostas) => {
     respostas[4] === "Sim" &&
     respostas[10] === "Sim"
   ) {
-    sintomas.push("Possível Gastroenterite")
+    sintomas.push("Possível Gastroenterite (Grave)")
+    sintomaGrave = true
   }
   if (
     respostas[1] === "Sim" &&
@@ -69,7 +73,8 @@ const identificarSintomas = (respostas) => {
     respostas[8] === "Sim" &&
     respostas[9] === "Sim"
   ) {
-    sintomas.push("Possível Migração de Infecção")
+    sintomas.push("Possível Migração de Infecção (Grave)")
+    sintomaGrave = true
   }
   if (
     respostas[6] === "Sim" &&
@@ -77,11 +82,11 @@ const identificarSintomas = (respostas) => {
     respostas[4] === "Sim" &&
     respostas[10] === "Sim"
   ) {
-    sintomas.push("Possível Desidratação")
+    sintomas.push("Possível Desidratação (Grave)")
+    sintomaGrave = true
   }
 
-  const estadoGrave = sintomas.length >= 3
-  return { sintomas, estadoGrave }
+  return { sintomas, estadoGrave: sintomaGrave }
 }
 
 // Lista de hospitais com coordenadas
@@ -91,80 +96,80 @@ const listaHospitais = [
       nome: "Hospital São Lucas - Fernandes da Silveira",
       latitude: -10.91454,
       longitude: -37.06537,
-      endereço:
+      endereco:
         "R. Cel. Stanley da Silveira, 33 - São José, Aracaju - SE, 49015-400",
     },
     {
       nome: "Hospital Primavera",
       latitude: -10.95818,
       longitude: -37.05627,
-      endereço:
+      endereco:
         "Av. Ministro Geraldo Barreto Sobral, 2277 - Jardins, Aracaju - SE, 49026-010",
     },
     {
       nome: "Hospital Renascença",
       latitude: -10.93643,
       longitude: -37.06822,
-      endereço:
+      endereco:
         "Av. Gonçalo Rolemberg Leite, 1490 - Salgado Filho, Aracaju - SE, 49050-370",
     },
     {
       nome: "Hospital e Maternidade Santa Isabel",
       latitude: -10.92153,
       longitude: -37.06501,
-      endereço:
+      endereco:
         "Av. Simeão Sobral, 1312 - 18 do Forte, Aracaju - SE, 49072-720",
     },
     {
       nome: "Hospital Decós",
       latitude: -10.98513,
       longitude: -37.05267,
-      endereço:
+      endereco:
         "Av. Mario Jorge Menezes Viêira, 2477 - Coroa do Meio, Aracaju - SE, 49035-100",
     },
     {
       nome: "Hospital Nestor Piva",
       latitude: -10.91544,
       longitude: -37.06328,
-      endereço: "Av. Maranhão, s/n - 18 do Forte, Aracaju - SE, 49072-000",
+      endereco: "Av. Maranhão, s/n - 18 do Forte, Aracaju - SE, 49072-000",
     },
     {
       nome: "Hospital do Rim de Sergipe",
       latitude: -10.90979,
       longitude: -37.06398,
-      endereço: "R. Arauá, 02 - 41 - Centro, Aracaju - SE, 49010-330",
+      endereco: "R. Arauá, 02 - 41 - Centro, Aracaju - SE, 49010-330",
     },
     {
       nome: "Hospital Zona Sul",
       latitude: -10.96204,
       longitude: -37.07832,
-      endereço:
+      endereco:
         "Av. José Carlos Silva, 4215 - São Conrado, Aracaju - SE, 49042-190",
     },
     {
       nome: "Hospital Universitário",
       latitude: -10.93847,
       longitude: -37.07291,
-      endereço: "R. Cláudio Batista - Palestina, Aracaju - SE, 49060-676",
+      endereco: "R. Cláudio Batista - Palestina, Aracaju - SE, 49060-676",
     },
     {
       nome: "Hospital de Urgência de Sergipe",
       latitude: -10.93285,
       longitude: -37.07156,
-      endereço:
+      endereco:
         "Av. Pres. Tancredo Neves, 7501 - Capucho, Aracaju - SE, 49095-000",
     },
     {
       nome: "Hospital Gabriel Soares",
       latitude: -10.92037,
       longitude: -37.06585,
-      endereço: "Rua Itabaiana, 690 - Centro, Aracaju - SE, 49015-110",
+      endereco: "Rua Itabaiana, 690 - Centro, Aracaju - SE, 49015-110",
     },
     {
       nome: "Hospital Cirurgia",
       latitude: -10.91898,
       longitude: -37.06548,
-      endereço: "Av. Des. Maynard, 174 - Cirurgia, Aracaju - SE, 49055-000",
+      endereco: "Av. Des. Maynard, 174 - Cirurgia, Aracaju - SE, 49055-000",
     },
   ],
 ]
@@ -268,67 +273,70 @@ export default function DiagnosticoPrevio() {
     setHospitalMaisProximo(hospitalMaisProximo)
   }
 
-  const voltar = () => etapa > 0 && setEtapa(etapa - 1)
-
   const progresso = Math.round(((etapa + 1) / perguntas.length) * 100)
 
   return (
     <div className={styles.container}>
       <h1>Diagnóstico Prévio</h1>
-      <div className={styles.progressBar}>
+      <p className={styles.welcomeMessage}>
+        Olá, {user.nome}! <br />
+        Estamos aqui para ajudá-lo a entender melhor seus sintomas.
+      </p>
+
+      <div className={styles.progressBarContainer}>
         <div
           className={styles.progress}
           style={{
             width: `${progresso}%`,
-            backgroundColor: progresso === 100 ? "green" : "yellow",
+            backgroundColor: progresso === 100 ? "#28a745" : "#ffc107",
           }}
         />
       </div>
-      <p>Progresso: {progresso}%</p>
+      <p className={styles.progressText}>Progresso: {progresso}%</p>
 
       {!diagnostico ? (
-        <div>
+        <div className={styles.questionSection}>
           <h2>{perguntas[etapa].texto}</h2>
-          {perguntas[etapa].opcoes.map((opcao, index) => (
-            <button
-              key={index}
-              onClick={() => handleResposta(opcao)}
-              className={styles.optionButton}
-            >
-              {opcao}
-            </button>
-          ))}
+          <div className={styles.optionsContainer}>
+            {perguntas[etapa].opcoes.map((opcao, index) => (
+              <button
+                key={index}
+                onClick={() => handleResposta(opcao)}
+                className={styles.optionButton}
+              >
+                {opcao}
+              </button>
+            ))}
+          </div>
         </div>
       ) : (
         <div className={styles.diagnosis}>
           <h2>Diagnóstico Preliminar</h2>
-          {diagnostico.estadoGrave ? (
-            <div>
+          <ul>
+            {diagnostico.sintomas.map((sintoma, index) => (
+              <li key={index}>{sintoma}</li>
+            ))}
+          </ul>
+
+          {diagnostico.estadoGrave && (
+            <div className={styles.alertContainer}>
               <p className={styles.alert}>
-                Atenção: Vários sintomas graves foram identificados.
+                Atenção: Você possui um ou mais sintomas graves identificados.
                 Recomendamos que você procure o hospital mais próximo
                 imediatamente.
               </p>
-              {hospitalMaisProximo && (
-                <p>Hospital mais próximo: {hospitalMaisProximo.nome}</p>
-              )}
             </div>
-          ) : (
-            <ul>
-              {diagnostico.sintomas.map((sintoma, index) => (
-                <li key={index}>{sintoma}</li>
-              ))}
-            </ul>
+          )}
+
+          {hospitalMaisProximo && (
+            <div className={styles.hospitalInfo}>
+              <h3>Hospital mais próximo:</h3>
+              <p>{hospitalMaisProximo.nome}</p>
+              <p>{hospitalMaisProximo.endereco}</p>
+            </div>
           )}
         </div>
       )}
-      <div className={styles.navigation}>
-        {etapa > 0 && !diagnostico && (
-          <button onClick={voltar} className={styles.navButton}>
-            Voltar
-          </button>
-        )}
-      </div>
     </div>
   )
 }
