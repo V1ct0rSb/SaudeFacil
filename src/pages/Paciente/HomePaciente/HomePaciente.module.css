@@ -61,6 +61,36 @@
   font-weight: bold;
 }
 
+/* botão de sair  */
+#selectButton button {
+  width: 15.625rem;
+  height: 11.25rem;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  border: none;
+  background-color: rgb(251, 65, 65);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+#selectButton button:hover {
+  background-color: rgb(250, 103, 103);
+  transform: translateY(-0.3125rem);
+}
+
+#selectButtonIcon {
+  font-size: 50px;
+  color: #ffffff;
+  margin-bottom: 0.9375rem;
+}
+
+#selectButton p {
+  font-size: 1.1rem;
+  color: white;
+  font-weight: bold;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .selectButton button {

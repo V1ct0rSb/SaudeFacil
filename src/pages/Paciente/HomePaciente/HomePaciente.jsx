@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { FaUser } from "react-icons/fa"
 import { FaHospitalUser } from "react-icons/fa6"
-import { IoMdNotifications } from "react-icons/io"
+import { IoIosExit, IoMdNotifications } from "react-icons/io"
 import { MdAdd } from "react-icons/md"
 import { Link } from "react-router-dom"
 import Footer from "../../../components/Footer/Footer"
@@ -59,6 +59,17 @@ function HomePaciente() {
                   <FaUser />
                 </div>
                 <p>Informações do Paciente</p>
+              </button>
+            </Link>
+          </div>
+
+          <div id={styles.selectButton}>
+            <Link to="/">
+              <button>
+                <div id={styles.selectButtonIcon}>
+                  <IoIosExit />
+                </div>
+                <p>Sair</p>
               </button>
             </Link>
           </div>
