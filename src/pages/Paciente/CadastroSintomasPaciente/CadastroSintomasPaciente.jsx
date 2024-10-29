@@ -132,7 +132,7 @@ const CadastroSintomasPaciente = () => {
   return (
     <>
       <NavbarClean />
-      <main>
+      <main className={styles.homePacienteMain}>
         <div className={styles.container}>
           <h2>Cadastro de Sintomas</h2>
           <div className={styles.formGroup}>
