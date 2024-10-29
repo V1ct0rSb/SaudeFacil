@@ -1,8 +1,12 @@
+main {
+  background: linear-gradient(180deg, #dceaf8 40%, rgba(255, 255, 255, 1) 80%);
+}
+
 .container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #f8f9fa;
+  max-width: 700px;
+  margin: 90px auto;
+  padding: 50px;
+  background-color: #f3f3f3;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -110,6 +114,7 @@
 }
 
 .optionButton {
+  width: 40%;
   padding: 12px 30px;
   margin: 8px;
   background-color: #006eff;
@@ -125,4 +130,29 @@
 .optionButton:hover {
   background-color: #0056b3;
   transition: background 0.2s ease;
+}
+
+/* Botão de Voltar para Home  */
+.backHomeButton {
+  display: block;
+  margin: 60px auto 20px;
+  padding: 12px 24px;
+  background-color: #8c97a0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttonBackHome a {
+  text-decoration: none;
+}
+
+.backHomeButton:hover {
+  background-color: #5a6268;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }

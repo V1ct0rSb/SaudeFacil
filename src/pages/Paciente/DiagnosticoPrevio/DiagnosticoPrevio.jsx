@@ -1,9 +1,11 @@
 import axios from "axios"
+import opencage from "opencage-api-client"
 import { useContext, useState } from "react"
+import { Link } from "react-router-dom"
+import Footer from "../../../components/Footer/Footer"
+import NavbarClean from "../../../components/NavbarClean/NavbarClean"
 import { UserContext } from "../../../db/context/UserContext"
 import styles from "./DiagnosticoPrevio.module.css"
-
-import opencage from "opencage-api-client"
 
 // Perguntas
 const perguntas = [
@@ -19,11 +21,9 @@ const perguntas = [
   { id: 10, texto: "Sente calafrios frequentemente?", opcoes: ["Sim", "Não"] },
 ]
 
-// Combinações para identificar sintomas
-// Combinações para identificar sintomas
 const identificarSintomas = (respostas) => {
   const sintomas = []
-  let sintomaGrave = false // Variável para rastrear sintomas graves
+  let sintomaGrave = false
 
   // Identificação de sintomas
   if (
@@ -276,67 +276,77 @@ export default function DiagnosticoPrevio() {
   const progresso = Math.round(((etapa + 1) / perguntas.length) * 100)
 
   return (
-    <div className={styles.container}>
-      <h1>Diagnóstico Prévio</h1>
-      <p className={styles.welcomeMessage}>
-        Olá, {user.nome}! <br />
-        Estamos aqui para ajudá-lo a entender melhor seus sintomas.
-      </p>
+    <>
+      <main>
+        <NavbarClean />
+        <div className={styles.container}>
+          <h1>Diagnóstico Prévio</h1>
+          <p className={styles.welcomeMessage}>
+            Olá, {user.nome}! <br />
+            Estamos aqui para ajudá-lo a entender melhor seus sintomas.
+          </p>
+          <div className={styles.progressBarContainer}>
+            <div
+              className={styles.progress}
+              style={{
+                width: `${progresso}%`,
+                backgroundColor: progresso === 100 ? "#28a745" : "#ffc107",
+              }}
+            />
+          </div>
+          <p className={styles.progressText}>Progresso: {progresso}%</p>
+          {!diagnostico ? (
+            <div className={styles.questionSection}>
+              <h2>{perguntas[etapa].texto}</h2>
+              <div className={styles.optionsContainer}>
+                {perguntas[etapa].opcoes.map((opcao, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleResposta(opcao)}
+                    className={styles.optionButton}
+                  >
+                    {opcao}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className={styles.diagnosis}>
+              <h2>Diagnóstico Preliminar</h2>
+              <ul>
+                {diagnostico.sintomas.map((sintoma, index) => (
+                  <li key={index}>{sintoma}</li>
+                ))}
+              </ul>
+              {diagnostico.estadoGrave && (
+                <div className={styles.alertContainer}>
+                  <p className={styles.alert}>
+                    Atenção: Você possui um ou mais sintomas graves
+                    identificados. Recomendamos que você procure o hospital mais
+                    próximo imediatamente.
+                  </p>
+                </div>
+              )}
+              {hospitalMaisProximo && (
+                <div className={styles.hospitalInfo}>
+                  <h3>Hospital mais próximo:</h3>
+                  <p>{hospitalMaisProximo.nome}</p>
+                  <p>{hospitalMaisProximo.endereco}</p>
+                </div>
+              )}
+            </div>
+          )}
 
-      <div className={styles.progressBarContainer}>
-        <div
-          className={styles.progress}
-          style={{
-            width: `${progresso}%`,
-            backgroundColor: progresso === 100 ? "#28a745" : "#ffc107",
-          }}
-        />
-      </div>
-      <p className={styles.progressText}>Progresso: {progresso}%</p>
-
-      {!diagnostico ? (
-        <div className={styles.questionSection}>
-          <h2>{perguntas[etapa].texto}</h2>
-          <div className={styles.optionsContainer}>
-            {perguntas[etapa].opcoes.map((opcao, index) => (
-              <button
-                key={index}
-                onClick={() => handleResposta(opcao)}
-                className={styles.optionButton}
-              >
-                {opcao}
+          <div className={styles.buttonBackHome}>
+            <Link to="/HomePaciente">
+              <button className={styles.backHomeButton}>
+                <p>Voltar Para Home</p>
               </button>
-            ))}
+            </Link>
           </div>
         </div>
-      ) : (
-        <div className={styles.diagnosis}>
-          <h2>Diagnóstico Preliminar</h2>
-          <ul>
-            {diagnostico.sintomas.map((sintoma, index) => (
-              <li key={index}>{sintoma}</li>
-            ))}
-          </ul>
-
-          {diagnostico.estadoGrave && (
-            <div className={styles.alertContainer}>
-              <p className={styles.alert}>
-                Atenção: Você possui um ou mais sintomas graves identificados.
-                Recomendamos que você procure o hospital mais próximo
-                imediatamente.
-              </p>
-            </div>
-          )}
-
-          {hospitalMaisProximo && (
-            <div className={styles.hospitalInfo}>
-              <h3>Hospital mais próximo:</h3>
-              <p>{hospitalMaisProximo.nome}</p>
-              <p>{hospitalMaisProximo.endereco}</p>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
+        <Footer />
+      </main>
+    </>
   )
 }
