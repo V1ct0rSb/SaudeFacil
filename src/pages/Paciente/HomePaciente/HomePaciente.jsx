@@ -41,7 +41,7 @@ function HomePaciente() {
             </Link>
           </div>
           <div className={styles.selectButton}>
-            <Link to="/CadastroSintomasPaciente">
+            <Link to="/CadastroLembrete">
               <button>
                 <div className={styles.selectButtonIcon}>
                   <IoMdNotifications />

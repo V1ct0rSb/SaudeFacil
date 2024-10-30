@@ -74,7 +74,7 @@ const identificarSintomas = (respostas) => {
     respostas[5] === "Sim" &&
     respostas[7] === "Sim"
   ) {
-    sintomas.add("Possível Infecção Viral Comum")
+    sintomas.add("Infecção Viral Comum")
   }
 
   // Infecção Respiratória Grave
@@ -83,7 +83,7 @@ const identificarSintomas = (respostas) => {
     respostas[5] === "Sim" &&
     respostas[10] === "Sim"
   ) {
-    sintomas.add("Possível Infecção Respiratória Grave (Grave)")
+    sintomas.add("Infecção Respiratória Grave (Grave)")
     sintomaGrave = true
   }
 
@@ -93,7 +93,7 @@ const identificarSintomas = (respostas) => {
     respostas[24] === "Sim" &&
     respostas[22] === "Sim"
   ) {
-    sintomas.add("Possível AVC (Acidente Vascular Cerebral) (Grave)")
+    sintomas.add("AVC (Acidente Vascular Cerebral) (Grave)")
     sintomaGrave = true
   }
 
@@ -103,7 +103,7 @@ const identificarSintomas = (respostas) => {
     respostas[14] === "Sim" &&
     respostas[20] === "Sim"
   ) {
-    sintomas.add("Possível Choque Anafilático (Grave)")
+    sintomas.add("Choque Anafilático (Grave)")
     sintomaGrave = true
   }
 
@@ -116,7 +116,7 @@ const identificarSintomas = (respostas) => {
       respostas[20] === "Sim" &&
       respostas[9] === "Sim")
   ) {
-    sintomas.add("Possível COVID-19 (Grave)")
+    sintomas.add("COVID-19 (Grave)")
     if (respostas[8] === "Sim" || respostas[20] === "Sim") {
       sintomaGrave = true
     }
@@ -129,7 +129,7 @@ const identificarSintomas = (respostas) => {
     respostas[14] === "Sim" &&
     respostas[13] === "Sim"
   ) {
-    sintomas.add("Possível Dengue ou Zika Vírus")
+    sintomas.add("Dengue ou Zika Vírus")
   }
 
   // Chikungunya
@@ -139,7 +139,7 @@ const identificarSintomas = (respostas) => {
     respostas[13] === "Sim" &&
     respostas[10] === "Sim"
   ) {
-    sintomas.add("Possível Chikungunya")
+    sintomas.add("Chikungunya")
   }
 
   // Infecção Urinária Grave
@@ -149,7 +149,7 @@ const identificarSintomas = (respostas) => {
     respostas[18] === "Sim" &&
     respostas[19] === "Sim"
   ) {
-    sintomas.add("Possível Infecção Urinária Grave (Grave)")
+    sintomas.add("Infecção Urinária Grave (Grave)")
     sintomaGrave = true
   }
 
@@ -159,7 +159,7 @@ const identificarSintomas = (respostas) => {
     respostas[17] === "Sim" &&
     (respostas[20] === "Sim" || respostas[21] === "Sim")
   ) {
-    sintomas.add("Possível Insuficiência Cardíaca ou Renal (Grave)")
+    sintomas.add("Insuficiência Cardíaca ou Renal (Grave)")
     sintomaGrave = true
   }
 
@@ -170,7 +170,7 @@ const identificarSintomas = (respostas) => {
     respostas[19] === "Sim" &&
     respostas[20] === "Sim"
   ) {
-    sintomas.add("Possível Sepsis (Grave)")
+    sintomas.add("Sepsis (Grave)")
     sintomaGrave = true
   }
 
@@ -181,7 +181,7 @@ const identificarSintomas = (respostas) => {
     respostas[9] === "Sim" &&
     respostas[23] === "Sim"
   ) {
-    sintomas.add("Possível Infecção Estomacal ou Gastroenterite")
+    sintomas.add("Infecção Estomacal ou Gastroenterite")
   }
 
   // Artrite
@@ -190,7 +190,7 @@ const identificarSintomas = (respostas) => {
     respostas[11] === "Sim" &&
     respostas[4] === "Sim"
   ) {
-    sintomas.add("Possível Artrite")
+    sintomas.add("Artrite")
   }
 
   // Gripe
@@ -199,7 +199,7 @@ const identificarSintomas = (respostas) => {
     respostas[7] === "Sim" &&
     respostas[9] === "Sim"
   ) {
-    sintomas.add("Possível Gripe")
+    sintomas.add("Gripe")
   }
 
   // Sinusite
@@ -208,12 +208,12 @@ const identificarSintomas = (respostas) => {
     respostas[4] === "Sim" &&
     respostas[6] === "Sim"
   ) {
-    sintomas.add("Possível Sinusite")
+    sintomas.add("Sinusite")
   }
 
   // Tétano
   if (respostas[17] === "Sim" && respostas[10] === "Sim") {
-    sintomas.add("Possível Tétano (Grave)")
+    sintomas.add("Tétano (Grave)")
     sintomaGrave = true
   }
 
@@ -224,17 +224,17 @@ const identificarSintomas = (respostas) => {
     respostas[9] === "Sim" &&
     respostas[18] === "Sim"
   ) {
-    sintomas.add("Possível Desidratação Grave (Grave)")
+    sintomas.add("Desidratação Grave (Grave)")
     sintomaGrave = true
   }
 
-  // Possível Embolia Pulmonar
+  // Embolia Pulmonar
   if (
     respostas[8] === "Sim" &&
     respostas[7] === "Não" &&
     respostas[17] === "Sim"
   ) {
-    sintomas.add("Possível Embolia Pulmonar (Grave)")
+    sintomas.add("Embolia Pulmonar (Grave)")
     sintomaGrave = true
   }
 
@@ -243,7 +243,7 @@ const identificarSintomas = (respostas) => {
     respostas[20] === "Sim" &&
     (respostas[8] === "Sim" || respostas[18] === "Sim")
   ) {
-    sintomas.add("Possível Condição Grave - Consulte um Médico")
+    sintomas.add("Condição Grave - Consulte um Médico")
     sintomaGrave = true
   }
 

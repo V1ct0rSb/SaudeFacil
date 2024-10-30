@@ -1,0 +1,209 @@
+import { useEffect, useState } from "react"
+import { FaTrashAlt } from "react-icons/fa"
+import Footer from "../../../components/Footer/Footer"
+import NavbarClean from "../../../components/NavbarClean/NavbarClean"
+import styles from "./CadastroLembretes.module.css"
+
+const CadastroLembretes = () => {
+  const [lembretes, setLembretes] = useState([])
+  const [lembreteAtual, setLembreteAtual] = useState({
+    titulo: "",
+    descricao: "",
+    data_lembrete: "",
+    status: "",
+    tipo: "",
+  })
+
+  const carregarLembretes = async () => {
+    const usuarioId = localStorage.getItem("usuarioId")
+    if (!usuarioId) return
+
+    try {
+      const response = await fetch(
+        `http://localhost:3006/lembretes/${usuarioId}`
+      )
+      if (response.ok) {
+        const data = await response.json()
+        setLembretes(data)
+      } else {
+        console.error("Erro ao buscar lembretes")
+      }
+    } catch (error) {
+      console.error("Erro ao buscar lembretes:", error)
+    }
+  }
+
+  useEffect(() => {
+    carregarLembretes()
+  }, [])
+
+  const handleLembreteChange = (e) => {
+    const { name, value } = e.target
+    setLembreteAtual({ ...lembreteAtual, [name]: value })
+  }
+
+  const adicionarLembrete = async () => {
+    const usuarioId = localStorage.getItem("usuarioId")
+
+    try {
+      const response = await fetch(
+        "http://localhost:3006/lembretes/cadastrar",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...lembreteAtual, usuario_id: usuarioId }),
+        }
+      )
+
+      if (response.ok) {
+        const data = await response.json()
+        setLembretes([
+          ...lembretes,
+          {
+            ...lembreteAtual,
+            id: data.id,
+            data_criacao: new Date().toISOString(),
+          },
+        ])
+        setLembreteAtual({
+          titulo: "",
+          descricao: "",
+          data_lembrete: "",
+          status: "",
+          tipo: "",
+        })
+      } else {
+        console.error("Erro ao cadastrar lembrete")
+      }
+    } catch (error) {
+      console.error("Erro ao cadastrar lembrete:", error)
+    }
+  }
+
+  const deletarLembrete = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3006/lembretes/${id}`, {
+        method: "DELETE",
+      })
+
+      if (response.ok) {
+        setLembretes(lembretes.filter((lembrete) => lembrete.id !== id))
+      } else {
+        console.error("Erro ao deletar lembrete")
+      }
+    } catch (error) {
+      console.error("Erro ao deletar lembrete:", error)
+    }
+  }
+
+  return (
+    <>
+      <NavbarClean />
+      <main className={styles.homePacienteMain}>
+        <div className={styles.container}>
+          <h2>Cadastro de Lembretes</h2>
+          <div className={styles.formGroup}>
+            <label className={styles.label}>Título</label>
+            <input
+              className={styles.inputField}
+              type="text"
+              name="titulo"
+              value={lembreteAtual.titulo}
+              onChange={handleLembreteChange}
+            />
+            <label className={styles.label}>Descrição</label>
+            <textarea
+              className={styles.textArea}
+              name="descricao"
+              value={lembreteAtual.descricao}
+              onChange={handleLembreteChange}
+            />
+            <label className={styles.label}>Data do Lembrete</label>
+            <input
+              className={styles.inputField}
+              type="date"
+              name="data_lembrete"
+              value={lembreteAtual.data_lembrete}
+              onChange={handleLembreteChange}
+            />
+            <label className={styles.label}>Status</label>
+            <select
+              className={styles.inputField}
+              name="status"
+              value={lembreteAtual.status}
+              onChange={handleLembreteChange}
+            >
+              <option value="">Selecione</option>
+              <option value="Ativo">Ativo</option>
+              <option value="Concluído">Concluído</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+            <label className={styles.label}>Tipo</label>
+            <select
+              className={styles.inputField}
+              name="tipo"
+              value={lembreteAtual.tipo || "Medicamento"}
+              onChange={handleLembreteChange}
+            >
+              <option value="">Selecione</option>
+              <option value="Medicamento">Medicamento</option>
+              <option value="Consulta">Consulta</option>
+              <option value="Exame">Exame</option>
+              <option value="Outro">Outro</option>
+            </select>
+            <button className={styles.button} onClick={adicionarLembrete}>
+              Adicionar Lembrete
+            </button>
+          </div>
+          <h3>Lembretes Registrados</h3>
+          <ul className={styles.list}>
+            {lembretes.map((lembrete, index) => (
+              <li key={index} className={styles.listItem}>
+                <div className={styles.lembreteHeader}>
+                  <span className={styles.lembreteTitulo}>
+                    {lembrete.titulo}
+                  </span>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Tem certeza que deseja deletar este lembrete?"
+                        )
+                      ) {
+                        deletarLembrete(lembrete.id)
+                      }
+                    }}
+                  >
+                    <FaTrashAlt />
+                    Deletar
+                  </button>
+                </div>
+                <div className={styles.lembreteContent}>
+                  <p>
+                    <strong>Descrição:</strong> {lembrete.descricao}
+                  </p>
+                  <p>
+                    <strong>Data:</strong>{" "}
+                    {new Date(lembrete.data_lembrete).toLocaleDateString()}
+                  </p>
+                  <p>
+                    <strong>Status:</strong> {lembrete.status}
+                  </p>
+                  <p>
+                    <strong>Tipo:</strong> {lembrete.tipo}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </main>
+      <Footer />
+    </>
+  )
+}
+
+export default CadastroLembretes
