@@ -33,8 +33,25 @@ const CadastroLembretes = () => {
     }
   }
 
+  // Função para atualizar o status dos lembretes expirados
+  const atualizarStatusLembretes = async () => {
+    try {
+      await fetch("http://localhost:3006/lembretes/atualizarStatus", {
+        method: "POST",
+      })
+      carregarLembretes() // Recarrega os lembretes após a atualização
+    } catch (error) {
+      console.error("Erro ao atualizar status dos lembretes:", error)
+    }
+  }
+
   useEffect(() => {
-    carregarLembretes()
+    carregarLembretes() // Carrega os lembretes ao montar o componente
+    atualizarStatusLembretes() // Atualiza status ao montar o componente
+
+    // Configura intervalo para verificar status a cada minuto (60000 ms)
+    const intervalId = setInterval(atualizarStatusLembretes, 60000)
+    return () => clearInterval(intervalId) // Limpa o intervalo ao desmontar o componente
   }, [])
 
   const handleLembreteChange = (e) => {
@@ -53,20 +70,15 @@ const CadastroLembretes = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...lembreteAtual, usuario_id: usuarioId }),
+          body: JSON.stringify({
+            ...lembreteAtual,
+            usuario_id: usuarioId,
+            status: "Ativo",
+          }),
         }
       )
 
       if (response.ok) {
-        const data = await response.json()
-        setLembretes([
-          ...lembretes,
-          {
-            ...lembreteAtual,
-            id: data.id,
-            data_criacao: new Date().toISOString(),
-          },
-        ])
         setLembreteAtual({
           titulo: "",
           descricao: "",
@@ -74,6 +86,8 @@ const CadastroLembretes = () => {
           status: "",
           tipo: "",
         })
+        await atualizarStatusLembretes()
+        await carregarLembretes()
       } else {
         console.error("Erro ao cadastrar lembrete")
       }
@@ -128,23 +142,12 @@ const CadastroLembretes = () => {
               value={lembreteAtual.data_lembrete}
               onChange={handleLembreteChange}
             />
-            <label className={styles.label}>Status</label>
-            <select
-              className={styles.inputField}
-              name="status"
-              value={lembreteAtual.status}
-              onChange={handleLembreteChange}
-            >
-              <option value="">Selecione</option>
-              <option value="Ativo">Ativo</option>
-              <option value="Concluído">Concluído</option>
-              <option value="Cancelado">Cancelado</option>
-            </select>
+
             <label className={styles.label}>Tipo</label>
             <select
               className={styles.inputField}
               name="tipo"
-              value={lembreteAtual.tipo || "Medicamento"}
+              value={lembreteAtual.tipo}
               onChange={handleLembreteChange}
             >
               <option value="">Selecione</option>

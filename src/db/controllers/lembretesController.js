@@ -1,16 +1,14 @@
-
 export const cadastrarLembrete = (req, res) => {
-  const { usuario_id, titulo, descricao, data_lembrete, status, tipo } =
-    req.body
+  const { usuario_id, titulo, descricao, data_lembrete, tipo } = req.body
 
   const sql = `
-    INSERT INTO lembrete (usuario_id, titulo, descricao, data_lembrete, status, tipo)
-    VALUES (?, ?, ?, ?, ?, ?)
+  INSERT INTO lembrete (usuario_id, titulo, descricao, data_lembrete, status, tipo)
+  VALUES (?, ?, ?, ?, 'Ativo', ?)
   `
 
   req.db.query(
     sql,
-    [usuario_id, titulo, descricao, data_lembrete, status, tipo],
+    [usuario_id, titulo, descricao, data_lembrete, tipo],
     (err, results) => {
       if (err) {
         console.error("Erro ao cadastrar lembrete:", err)
@@ -52,5 +50,25 @@ export const obterLembretePorUsuario = (req, res) => {
     }
 
     res.status(200).json(results)
+  })
+}
+
+export const atualizarStatusLembretes = (req, res) => {
+  const sql = `
+    UPDATE lembrete
+    SET status = CASE
+      WHEN data_lembrete < CURDATE() THEN 'Concluído'
+      ELSE status
+    END
+    WHERE status = 'Ativo'
+  `
+
+  req.db.query(sql, (err) => {
+    if (err) {
+      console.error("Erro ao atualizar status:", err)
+      return res.status(500).json({ message: "Erro ao atualizar status" })
+    }
+
+    res.status(200).json({ message: "Status atualizado com sucesso" })
   })
 }

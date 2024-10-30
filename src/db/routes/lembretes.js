@@ -1,5 +1,6 @@
-import express from 'express'
+import express from "express"
 import {
+  atualizarStatusLembretes,
   cadastrarLembrete,
   deletarLembrete,
   obterLembretePorUsuario,
@@ -7,8 +8,9 @@ import {
 
 const router = express.Router()
 
-router.post('/cadastrar', cadastrarLembrete)
-router.delete('/:id', deletarLembrete)
+router.post("/cadastrar", cadastrarLembrete)
+router.delete("/:id", deletarLembrete)
 router.get("/:usuario_id", obterLembretePorUsuario)
+router.post("/atualizarStatus", atualizarStatusLembretes)
 
 export default router
