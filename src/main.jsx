@@ -9,6 +9,7 @@ import Login from "./pages/LoginPaciente/Login.jsx"
 import CadastroSintomasPaciente from "./pages/Paciente/CadastroSintomasPaciente/CadastroSintomasPaciente.jsx"
 import DiagnosticoPrevio from "./pages/Paciente/DiagnosticoPrevio/DiagnosticoPrevio.jsx"
 import HomePaciente from "./pages/Paciente/HomePaciente/HomePaciente.jsx"
+import InfoPaciente from "./pages/Paciente/InfoPaciente/InfoPaciente.jsx"
 import "./styles/Global.css"
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/DiagnosticoPrevio",
         element: <DiagnosticoPrevio />,
+      },
+      {
+        path: "/InfoPaciente",
+        element: <InfoPaciente />,
       },
     ],
   },
