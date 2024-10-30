@@ -220,7 +220,15 @@ const CadastroSintomasPaciente = () => {
                   </span>
                   <button
                     className={styles.deleteButton}
-                    onClick={() => deletarSintoma(sintoma.id)}
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Tem certeza que deseja deletar este sintoma?"
+                        )
+                      ) {
+                        deletarSintoma(sintoma.id)
+                      }
+                    }}
                   >
                     <div className={styles.deleteButtonIcon}>
                       <FaTrashAlt />
