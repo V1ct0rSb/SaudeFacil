@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { FaTrashAlt } from "react-icons/fa"
+import { TfiAgenda } from "react-icons/tfi"
 import Footer from "../../../components/Footer/Footer"
 import NavbarClean from "../../../components/NavbarClean/NavbarClean"
 import styles from "./CadastroLembretes.module.css"
@@ -33,25 +34,23 @@ const CadastroLembretes = () => {
     }
   }
 
-  // Função para atualizar o status dos lembretes expirados
   const atualizarStatusLembretes = async () => {
     try {
       await fetch("http://localhost:3006/lembretes/atualizarStatus", {
         method: "POST",
       })
-      carregarLembretes() // Recarrega os lembretes após a atualização
+      carregarLembretes()
     } catch (error) {
       console.error("Erro ao atualizar status dos lembretes:", error)
     }
   }
 
   useEffect(() => {
-    carregarLembretes() // Carrega os lembretes ao montar o componente
-    atualizarStatusLembretes() // Atualiza status ao montar o componente
+    carregarLembretes()
+    atualizarStatusLembretes()
 
-    // Configura intervalo para verificar status a cada minuto (60000 ms)
     const intervalId = setInterval(atualizarStatusLembretes, 60000)
-    return () => clearInterval(intervalId) // Limpa o intervalo ao desmontar o componente
+    return () => clearInterval(intervalId)
   }, [])
 
   const handleLembreteChange = (e) => {
@@ -110,6 +109,19 @@ const CadastroLembretes = () => {
     } catch (error) {
       console.error("Erro ao deletar lembrete:", error)
     }
+  }
+
+  const formatarDataParaGoogle = (data) => {
+    const dataObj = new Date(data)
+    return dataObj.toISOString().replace(/-|:|\.\d\d\d/g, "")
+  }
+
+  const gerarLinkGoogleCalendar = (lembrete) => {
+    const dataInicio = formatarDataParaGoogle(lembrete.data_lembrete)
+    const dataFim = formatarDataParaGoogle(lembrete.data_lembrete)
+    const titulo = encodeURIComponent(lembrete.titulo)
+    const descricao = encodeURIComponent(lembrete.descricao)
+    return `https://calendar.google.com/calendar/r/eventedit?dates=${dataInicio}/${dataFim}&text=${titulo}&details=${descricao}`
   }
 
   return (
@@ -173,15 +185,17 @@ const CadastroLembretes = () => {
                     onClick={() => {
                       if (
                         window.confirm(
-                          "Tem certeza que deseja deletar este lembrete?"
+                          "Tem certeza que deseja deletar este sintoma?"
                         )
                       ) {
                         deletarLembrete(lembrete.id)
                       }
                     }}
                   >
-                    <FaTrashAlt />
-                    Deletar
+                    <div className={styles.deleteButtonIcon}>
+                      <FaTrashAlt />
+                    </div>
+                    <p>Deletar</p>
                   </button>
                 </div>
                 <div className={styles.lembreteContent}>
@@ -198,6 +212,18 @@ const CadastroLembretes = () => {
                   <p>
                     <strong>Tipo:</strong> {lembrete.tipo}
                   </p>
+                  <button className={styles.googleCalendarLink}>
+                    <a
+                      href={gerarLinkGoogleCalendar(lembrete)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div className={styles.googleCalendarIcon}>
+                        <TfiAgenda />
+                      </div>
+                      <p>Adicionar ao Google Calendar</p>
+                    </a>
+                  </button>
                 </div>
               </li>
             ))}

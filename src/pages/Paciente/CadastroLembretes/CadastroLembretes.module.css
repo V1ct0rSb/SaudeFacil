@@ -1,146 +1,158 @@
-/* CadastroSintomasPaciente.module.css */
-
 .homePacienteMain {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(180deg, #dceaf8 90%, rgba(255, 255, 255, 1) 100%);
+  padding: 60px;
 }
 
 .container {
-  max-width: 800px;
   width: 100%;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 800px;
   padding: 20px;
-  margin: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+h2,
+h3 {
   color: #333;
   text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .label {
-  font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
   color: #555;
 }
 
 .inputField,
-.textArea,
-.select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
+.textArea {
   width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
 }
 
 .inputField:focus,
 .textArea:focus,
 .select:focus {
-  border-color: #007bff;
   outline: none;
-}
-
-.textArea {
-  height: 80px;
-  resize: vertical;
+  border-color: #007bff;
+  box-shadow: 0 0 0.3125rem rgba(0, 123, 255, 0.5);
 }
 
 .button {
-  padding: 10px 15px;
   background-color: #007bff;
   color: #fff;
+  padding: 12px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-size: 18px;
+  transition: background-color 0.3s;
 }
-
 .button:hover {
   background-color: #0056b3;
 }
 
-h3 {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #333;
-}
-
 .list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin-top: 20px;
 }
 
 .listItem {
-  background: #f1f1f1;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.sintomaHeader {
+.listItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.lembreteHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 12px;
 }
 
-.sintomaTipo {
+.lembreteTitulo {
   font-size: 18px;
-  font-weight: bold;
-  color: #007bff;
+  font-weight: 600;
+  color: #333;
 }
 
-.sintomaContent {
-  margin-top: 10px;
+.lembreteContent {
+  font-size: 15px;
+  color: #4a4a4a;
+  line-height: 1.6;
 }
 
-.sintomaContent p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.deleteButton,
-.shareButton {
-  display: flex;
-  align-items: center;
-  padding: 8px 10px;
-  background-color: #e3342f;
+.deleteButton {
+  background-color: #fb1e05;
   color: #fff;
+  padding: 8px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
   transition: background-color 0.3s ease;
 }
 
-.deleteButton:hover {
-  background-color: #cc1f1a;
-}
-
-.shareButton {
-  background-color: #38c172;
-}
-
-.shareButton:hover {
-  background-color: #2f9e5f;
+.deleteButton p {
+  font-size: 18px;
 }
 
 .deleteButtonIcon {
-  margin-right: 5px;
+  font-size: 20px;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+}
+
+.googleCalendarLink {
+  margin-top: 15px;
+  background-color: #007bff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.googleCalendarLink a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.googleCalendarLink:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.googleCalendarIcon {
+  font-size: 25px;
 }
