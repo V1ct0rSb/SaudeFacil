@@ -19,74 +19,259 @@ const perguntas = [
   { id: 8, texto: "Tem dificuldade para respirar?", opcoes: ["Sim", "Não"] },
   { id: 9, texto: "Está com náuseas ou vômitos?", opcoes: ["Sim", "Não"] },
   { id: 10, texto: "Sente calafrios frequentemente?", opcoes: ["Sim", "Não"] },
-]
+  { id: 11, texto: "Tem dor nas articulações?", opcoes: ["Sim", "Não"] },
+  { id: 12, texto: "Perda de olfato ou paladar?", opcoes: ["Sim", "Não"] },
+  {
+    id: 13,
+    texto: "Está com olhos vermelhos ou irritados?",
+    opcoes: ["Sim", "Não"],
+  },
+  { id: 14, texto: "Tem manchas na pele ou erupções?", opcoes: ["Sim", "Não"] },
+  {
+    id: 15,
+    texto: "Você está com dificuldade para urinar?",
+    opcoes: ["Sim", "Não"],
+  },
+  { id: 16, texto: "Sente dor ao urinar?", opcoes: ["Sim", "Não"] },
+  {
+    id: 17,
+    texto: "Tem inchaço nos pés ou tornozelos?",
+    opcoes: ["Sim", "Não"],
+  },
+  { id: 18, texto: "Está com dor abdominal intensa?", opcoes: ["Sim", "Não"] },
+  {
+    id: 19,
+    texto: "Notou sangue em alguma secreção (tosse ou urina)?",
+    opcoes: ["Sim", "Não"],
+  },
+  {
+    id: 20,
+    texto: "Está com confusão mental ou desorientação?",
+    opcoes: ["Sim", "Não"],
+  },
 
+  { id: 21, texto: "Está com dor no peito?", opcoes: ["Sim", "Não"] },
+  {
+    id: 22,
+    texto: "Sente dificuldade em se concentrar?",
+    opcoes: ["Sim", "Não"],
+  },
+  {
+    id: 23,
+    texto: "Tem problemas gastrointestinais como diarreia?",
+    opcoes: ["Sim", "Não"],
+  },
+  { id: 23, texto: "Tem episódios de tontura?", opcoes: ["Sim", "Não"] },
+]
 const identificarSintomas = (respostas) => {
-  const sintomas = []
+  const sintomas = new Set()
   let sintomaGrave = false
 
-  // Identificação de sintomas
+  // Infecções Virais Comuns
   if (
     respostas[1] === "Sim" &&
     respostas[2] === "Sim" &&
-    respostas[3] === "Sim" &&
-    respostas[6] === "Sim"
-  ) {
-    sintomas.push("Possível Infecção Viral")
-  }
-  if (
-    respostas[6] === "Sim" &&
-    respostas[4] === "Sim" &&
-    respostas[3] === "Sim" &&
-    respostas[2] === "Sim"
-  ) {
-    sintomas.push("Possível Síndrome de Fadiga Crônica")
-  }
-  if (
-    respostas[1] === "Sim" &&
-    respostas[7] === "Sim" &&
     respostas[5] === "Sim" &&
-    respostas[6] === "Não"
+    respostas[7] === "Sim"
   ) {
-    sintomas.push("Possível Resfriado Comum")
+    sintomas.add("Possível Infecção Viral Comum")
   }
+
+  // Infecção Respiratória Grave
   if (
-    respostas[5] === "Sim" &&
     respostas[8] === "Sim" &&
-    respostas[7] === "Sim" &&
-    respostas[1] === "Sim"
-  ) {
-    sintomas.push("Possível Infecção Respiratória")
-  }
-  if (
-    respostas[1] === "Sim" &&
-    respostas[9] === "Sim" &&
-    respostas[4] === "Sim" &&
+    respostas[5] === "Sim" &&
     respostas[10] === "Sim"
   ) {
-    sintomas.push("Possível Gastroenterite (Grave)")
-    sintomaGrave = true
-  }
-  if (
-    respostas[1] === "Sim" &&
-    respostas[2] === "Sim" &&
-    respostas[8] === "Sim" &&
-    respostas[9] === "Sim"
-  ) {
-    sintomas.push("Possível Migração de Infecção (Grave)")
-    sintomaGrave = true
-  }
-  if (
-    respostas[6] === "Sim" &&
-    respostas[9] === "Sim" &&
-    respostas[4] === "Sim" &&
-    respostas[10] === "Sim"
-  ) {
-    sintomas.push("Possível Desidratação (Grave)")
+    sintomas.add("Possível Infecção Respiratória Grave (Grave)")
     sintomaGrave = true
   }
 
-  return { sintomas, estadoGrave: sintomaGrave }
+  // AVC
+  if (
+    respostas[20] === "Sim" &&
+    respostas[24] === "Sim" &&
+    respostas[22] === "Sim"
+  ) {
+    sintomas.add("Possível AVC (Acidente Vascular Cerebral) (Grave)")
+    sintomaGrave = true
+  }
+
+  //  Choque Anafilático
+  if (
+    respostas[8] === "Sim" &&
+    respostas[14] === "Sim" &&
+    respostas[20] === "Sim"
+  ) {
+    sintomas.add("Possível Choque Anafilático (Grave)")
+    sintomaGrave = true
+  }
+
+  // COVID-19 (Comuns e Graves)
+  if (
+    (respostas[1] === "Sim" &&
+      respostas[12] === "Sim" &&
+      respostas[5] === "Sim") ||
+    (respostas[6] === "Sim" &&
+      respostas[20] === "Sim" &&
+      respostas[9] === "Sim")
+  ) {
+    sintomas.add("Possível COVID-19 (Grave)")
+    if (respostas[8] === "Sim" || respostas[20] === "Sim") {
+      sintomaGrave = true
+    }
+  }
+
+  // Dengue ou Zika
+  if (
+    respostas[1] === "Sim" &&
+    respostas[3] === "Sim" &&
+    respostas[14] === "Sim" &&
+    respostas[13] === "Sim"
+  ) {
+    sintomas.add("Possível Dengue ou Zika Vírus")
+  }
+
+  // Chikungunya
+  if (
+    respostas[3] === "Sim" &&
+    respostas[11] === "Sim" &&
+    respostas[13] === "Sim" &&
+    respostas[10] === "Sim"
+  ) {
+    sintomas.add("Possível Chikungunya")
+  }
+
+  // Infecção Urinária Grave
+  if (
+    respostas[15] === "Sim" &&
+    respostas[16] === "Sim" &&
+    respostas[18] === "Sim" &&
+    respostas[19] === "Sim"
+  ) {
+    sintomas.add("Possível Infecção Urinária Grave (Grave)")
+    sintomaGrave = true
+  }
+
+  // Doenças Cardíacas ou Renais
+  if (
+    respostas[8] === "Sim" &&
+    respostas[17] === "Sim" &&
+    (respostas[20] === "Sim" || respostas[21] === "Sim")
+  ) {
+    sintomas.add("Possível Insuficiência Cardíaca ou Renal (Grave)")
+    sintomaGrave = true
+  }
+
+  // Sepsis
+  if (
+    respostas[1] === "Sim" &&
+    respostas[18] === "Sim" &&
+    respostas[19] === "Sim" &&
+    respostas[20] === "Sim"
+  ) {
+    sintomas.add("Possível Sepsis (Grave)")
+    sintomaGrave = true
+  }
+
+  // Infecção Estomacal
+  if (
+    respostas[2] === "Sim" &&
+    respostas[4] === "Sim" &&
+    respostas[9] === "Sim" &&
+    respostas[23] === "Sim"
+  ) {
+    sintomas.add("Possível Infecção Estomacal ou Gastroenterite")
+  }
+
+  // Artrite
+  if (
+    respostas[2] === "Sim" &&
+    respostas[11] === "Sim" &&
+    respostas[4] === "Sim"
+  ) {
+    sintomas.add("Possível Artrite")
+  }
+
+  // Gripe
+  if (
+    respostas[1] === "Sim" &&
+    respostas[7] === "Sim" &&
+    respostas[9] === "Sim"
+  ) {
+    sintomas.add("Possível Gripe")
+  }
+
+  // Sinusite
+  if (
+    respostas[2] === "Sim" &&
+    respostas[4] === "Sim" &&
+    respostas[6] === "Sim"
+  ) {
+    sintomas.add("Possível Sinusite")
+  }
+
+  // Tétano
+  if (respostas[17] === "Sim" && respostas[10] === "Sim") {
+    sintomas.add("Possível Tétano (Grave)")
+    sintomaGrave = true
+  }
+
+  //  Desidratação Grave
+  if (
+    respostas[6] === "Sim" &&
+    respostas[0] === "Sim" &&
+    respostas[9] === "Sim" &&
+    respostas[18] === "Sim"
+  ) {
+    sintomas.add("Possível Desidratação Grave (Grave)")
+    sintomaGrave = true
+  }
+
+  // Possível Embolia Pulmonar
+  if (
+    respostas[8] === "Sim" &&
+    respostas[7] === "Não" &&
+    respostas[17] === "Sim"
+  ) {
+    sintomas.add("Possível Embolia Pulmonar (Grave)")
+    sintomaGrave = true
+  }
+
+  // Outros Casos Graves Específicos
+  if (
+    respostas[20] === "Sim" &&
+    (respostas[8] === "Sim" || respostas[18] === "Sim")
+  ) {
+    sintomas.add("Possível Condição Grave - Consulte um Médico")
+    sintomaGrave = true
+  }
+
+  // Verificação de Sintomas Comuns Inespecíficos
+  const sintomasComuns = [
+    respostas[1],
+    respostas[2],
+    respostas[3],
+    respostas[4],
+    respostas[5],
+    respostas[6],
+    respostas[7],
+    respostas[9],
+    respostas[10],
+    respostas[11],
+  ].filter((resposta) => resposta === "Sim").length
+
+  if (sintomas.size === 0 && sintomasComuns > 0) {
+    sintomas.add(
+      "Sintomas Inespecíficos: Recomendamos monitorar e procurar um médico se persistirem"
+    )
+  }
+
+  return {
+    sintomas: Array.from(sintomas),
+    estadoGrave: sintomaGrave,
+    sintomasComuns,
+  }
 }
 
 // Lista de hospitais com coordenadas
@@ -230,7 +415,7 @@ export default function DiagnosticoPrevio() {
       const { logradouro, localidade, uf } = responseViaCep.data
 
       // Requisição para obter latitude e longitude usando OpenCage
-      const apiKey = "fc83863ae3a144b68a8399d98b9fc665" // chave de API do OpenCage
+      const apiKey = "fc83863ae3a144b68a8399d98b9fc665" // chave API do OpenCage
       const query = `${logradouro}, ${localidade}, ${uf}`
 
       const geoData = await opencage.geocode({
@@ -282,9 +467,13 @@ export default function DiagnosticoPrevio() {
         <div className={styles.container}>
           <h1>Diagnóstico Prévio</h1>
           <p className={styles.welcomeMessage}>
-            Olá, {user.nome}! <br />
+            Olá,{" "}
+            {user.nome.split(" ")[0].charAt(0).toUpperCase() +
+              user.nome.split(" ")[0].slice(1).toLowerCase()}
+            ! <br />
             Estamos aqui para ajudá-lo a entender melhor seus sintomas.
           </p>
+
           <div className={styles.progressBarContainer}>
             <div
               className={styles.progress}

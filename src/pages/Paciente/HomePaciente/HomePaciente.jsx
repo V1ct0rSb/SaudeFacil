@@ -17,7 +17,15 @@ function HomePaciente() {
       <NavbarClean />
       <main className={styles.homeMain}>
         <div className={styles.welcomeSection}>
-          <h1>Bem-vindo, {user ? user.nome : "sem nome"}!</h1>
+          <h1>
+            Bem-vindo,{" "}
+            {user
+              ? user.nome.split(" ")[0].charAt(0).toUpperCase() +
+                user.nome.split(" ")[0].slice(1).toLowerCase()
+              : "sem nome"}
+            !
+          </h1>
+
           <p>Selecione uma das opções abaixo</p>
         </div>
 
