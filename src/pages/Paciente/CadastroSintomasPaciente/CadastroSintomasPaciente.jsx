@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { FaTrashAlt } from "react-icons/fa"
+import { FaShareAlt, FaTrashAlt } from "react-icons/fa"
 import Footer from "../../../components/Footer/Footer"
 import NavbarClean from "../../../components/NavbarClean/NavbarClean"
 import styles from "./CadastroSintomasPaciente.module.css"
@@ -262,6 +262,33 @@ const CadastroSintomasPaciente = () => {
                     {formatarDataHora(sintoma.data_criacao)}
                   </p>
                 </div>
+                <button
+                  className={styles.shareButton}
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator
+                        .share({
+                          text: `📋 Sintoma: ${sintoma.tipo_sintoma}
+🔹 *Intensidade:* ${sintoma.intensidade}
+🔹 *Localização:* ${sintoma.localizacao}
+🔹 *Descrição:* ${sintoma.descricao}
+🔹 *Data de Início:* ${formatarData(sintoma.data_sintoma)}
+🔹 *Data de Fim:* ${formatarData(sintoma.data_fim_sintoma)}
+🔹 *Comentário:* ${sintoma.comentario}
+📅 *Data de Registro:* ${formatarDataHora(sintoma.data_criacao)}`,
+                        })
+
+                        .catch((error) =>
+                          console.log("Erro ao compartilhar:", error)
+                        )
+                    } else {
+                      alert("Compartilhamento não é suportado neste navegador.")
+                    }
+                  }}
+                >
+                  <FaShareAlt />
+                  Compartilhar
+                </button>
               </li>
             ))}
           </ul>
