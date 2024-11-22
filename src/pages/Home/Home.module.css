@@ -91,7 +91,7 @@
   flex-direction: row;
   padding: 5rem 1.25rem;
   justify-content: space-around;
-  background: linear-gradient(to bottom, #eef9fa, #80deea);
+  background: linear-gradient(to bottom, #ecfafc, #dceaf8);
   height: 53.125rem;
 }
 
@@ -169,7 +169,7 @@
 /* section03  -> Recursos*/
 /* Container -> Pai */
 .sectionCharacterContainer {
-  background: linear-gradient(to bottom, #80deea, #ffffff);
+  background: linear-gradient(to bottom, #dceaf8, #ffffff);
   height: auto;
   padding: 1.25rem;
 }
