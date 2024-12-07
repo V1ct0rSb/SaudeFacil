@@ -1,8 +1,30 @@
-# React + Vite
+# SaúdeFácil
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Projeto de TCC - Implementação de Sistema para Autogestão de Sintomas e Acompanhamento de Saúde**
 
-Currently, two official plugins are available:
+## Resumo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+SaúdeFácil é uma plataforma web desenvolvida para promover o autocuidado e o acompanhamento contínuo da saúde. O sistema permite que os usuários registrem sintomas, configurem lembretes, acompanhem tratamentos e compartilhem informações com pessoas de confiança. A aplicação utiliza **React** no front-end e **MySQL** no back-end para garantir uma interface intuitiva e um gerenciamento seguro dos dados.
+
+---
+
+## Funcionalidades
+
+### Para Usuários
+- **Registro de Sintomas:** Permite registrar sintomas com detalhes.
+- **Histórico:** Visualização de sintomas anteriores e notas.
+- **Lembretes Personalizados:** Configuração de lembretes para medicamentos, consultas e exames.
+- **Diagnóstico Preliminar:** Sugestões baseadas nos sintomas registrados.
+- **Compartilhamento de Relatórios:** Geração de relatórios para pessoas da confiança do usuário.
+
+---
+
+## Tecnologias Utilizadas
+
+- **Front-End:** React, Vite
+- **Back-End:** Node.js
+- **Banco de Dados:** MySQL
+- **Hospedagem:** Vercel
+- **Controle de Versão:** GitHub
+- **Outras Ferramentas:** Visual Studio Code
+
