@@ -38,38 +38,39 @@ export default function Login() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const validationErrors = validate()
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      return
-    }
+    // e.preventDefault()
+    // const validationErrors = validate()
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors)
+    //   return
+    // }
 
-    try {
-      const response = await fetch("http://localhost:3006/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+    // try {
+    //   const response = await fetch("http://localhost:3006/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(formData),
+    //   })
 
-      const data = await response.json()
+    //   const data = await response.json()
 
-      if (response.ok) {
-        localStorage.setItem("usuarioId", data.user.id) // Armazena o ID do usuário no localStorage
-        console.log("Login bem-sucedido:", data)
-        console.log("Id Logado:", data.user.id)
+    //   if (response.ok) {
+    //     localStorage.setItem("usuarioId", data.user.id) // Armazena o ID do usuário no localStorage
+    //     console.log("Login bem-sucedido:", data)
+    //     console.log("Id Logado:", data.user.id)
 
-        setUser(data.user) // Armazena as informações do usuário no contexto
-        navigate("/HomePaciente")
-      } else {
-        setLoginError(data.message || "Erro ao realizar login")
-      }
-    } catch (error) {
-      console.error("Erro ao realizar login:", error)
-      setLoginError("Erro ao realizar login")
-    }
+    //     setUser(data.user) // Armazena as informações do usuário no contexto
+    //     navigate("/HomePaciente")
+    //   } else {
+    //     setLoginError(data.message || "Erro ao realizar login")
+    //   }
+    // } catch (error) {
+    //   console.error("Erro ao realizar login:", error)
+    //   setLoginError("Erro ao realizar login")
+    // }
+    navigate("/HomePaciente")
   }
 
   return (
@@ -105,7 +106,7 @@ export default function Login() {
               id="email"
               name="email"
               placeholder="SeuEmail@gmail.com"
-              required
+              // required
               aria-required="true"
               value={formData.email}
               onChange={handleChange}
@@ -129,7 +130,7 @@ export default function Login() {
               id="senha"
               name="senha"
               placeholder="Sua Senha"
-              required
+              // required
               aria-required="true"
               value={formData.senha}
               onChange={handleChange}
