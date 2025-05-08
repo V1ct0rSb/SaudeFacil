@@ -1,4 +1,4 @@
-# SaúdeFácil - Implementação de Sistema para Autogestão de Sintomas e Acompanhamento de Saúde
+#  Implementação de Sistema para Autogestão de Sintomas e Acompanhamento de Saúde
 
 ## Resumo
 
