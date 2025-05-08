@@ -1,6 +1,4 @@
-# SaúdeFácil
-
-**Projeto de TCC - Implementação de Sistema para Autogestão de Sintomas e Acompanhamento de Saúde**
+# SaúdeFácil - Implementação de Sistema para Autogestão de Sintomas e Acompanhamento de Saúde
 
 ## Resumo
 
